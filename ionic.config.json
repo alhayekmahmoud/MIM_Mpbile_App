@@ -1,0 +1,7 @@
+{
+  "name": "MIM",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
