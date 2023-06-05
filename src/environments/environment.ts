@@ -19,6 +19,11 @@ export const environment = {
     web: {
       redirectUrl: 'http://localhost:8100/',
     },
+  },
+  config: {
+    logging: {
+      level: 'all',
+    }
   }
 
 };

@@ -11,7 +11,8 @@ export class HomePage {
   constructor(private authService: AuthService) {}
 
   public async handleLogout(): Promise<void> {
-    // await this.authService.getUserInfo();
+   await this.authService.getUserInfo();
+
     await this.authService.logout();
   }
 

@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 import { StorageService } from '../storage/storage.service';
 import { Browser } from '@capacitor/browser';
 import { UserInput, UserModel } from './auth.interfaces';
+import jwtDecode from 'jwt-decode';
+import { LoggingService } from '../logging/logging.service';
 
 enum AuthServiceStorageEnum {
   accessToken = 'ACCESS_TOKEN',
@@ -23,7 +25,7 @@ export class AuthService {
   // Store an internal app flag if the current user is logged in or not
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor(private storageService: StorageService) {}
+  constructor(private storageService: StorageService, private loggingService: LoggingService) {}
 
   /**
    * Setup method should always be called from the main `app.component` ngOnInit lifecycle.
@@ -200,12 +202,19 @@ export class AuthService {
    * @returns boolean true or false based on the login state.
    */
   public async getUserInfo(): Promise<UserModel> {
-    const idToken = this.jwtDecode(await this.getAccessToken()) as UserInput;
-    //if (!idToken) {
+    const idToken = jwtDecode(await this.getAccessToken()|| '{}') as UserInput;
+    if (!idToken) {
 
-      //  this.loggingService.info('#Auth-Service - No idToken found during getUserInfo call');
-      //  return null;
-    //}
+      this.loggingService.info('#Auth-Service - No idToken found during getUserInfo call');
+      return {
+        // id: idToken.,
+        email:'',
+        name: '',
+        // firstName: idToken.given_name,
+        // lastName: idToken.family_name,
+        picture: 'assets/user-placeholder.jpg',
+      };
+    }
 
     let email = '';
     if (Array.isArray(idToken.emails)) {
@@ -221,9 +230,7 @@ console.log('token',idToken)
       picture: 'assets/user-placeholder.jpg',
     };
   }
-   jwtDecode(arg0: string | undefined): UserInput {
-    throw new Error('Function not implemented.');
-  }
+
 
 
 }

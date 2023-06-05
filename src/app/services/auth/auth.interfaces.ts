@@ -26,3 +26,4 @@ export interface UserModel {
   // lastName: string;
   picture: string;
 }
+
