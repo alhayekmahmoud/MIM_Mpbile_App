@@ -1,0 +1,45 @@
+// #bg{
+//   height: 50%;
+//   width: 100%;
+//   background: var(--ion-color-dark) url('../../../assets/images/leaves.png') no-repeat center center/cover;
+//   border-radius: 0 0 60% 60% / 25%;;
+//   // margin-left: -21vw;
+//   position: relative;
+
+// }
+// ion-fab{
+//   ion-icon{
+//     font-size: 2.5rem;
+//   }
+
+// }
+// ion-list{
+//   margin-top: 6vh !important;
+//   ion-list-header{
+//     font-weight: 1000;
+//     font-size: 1.5rem;
+//   }
+//   ion-item{
+//     border: 2px solid var(--ion color-light);
+//     border-radius: 20px;
+//     -webkit-box-shadow: 0 6px 4px -4px var(--ion-color-medium);
+//     -moz-box-shadow: 0 6px 4px -4px var(--ion-color-medium);
+//     box-shadow: 0 6px 4px -4px var(--ion-color-medium);
+//   }
+//   p{
+//     font-size: 0.8rem;
+//     padding-left: 5vw;
+//   }
+// }
+.logo {
+  width: 50%;
+  margin: 20% 0 20% 0;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.title p {
+  margin-top: 0 !important;
+}

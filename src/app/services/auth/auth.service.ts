@@ -32,6 +32,9 @@ export class AuthService {
    * Verifies if an access token already exists or not.
    * **NOTE** Refresh Token checks can be implemented here aswell :)
    */
+  public isAuthenticated(): boolean {
+    return this.isLoggedIn.value;
+  }
   public async setup(): Promise<void> {
     const accessToken = await this.storageService.get(
       AuthServiceStorageEnum.accessToken
